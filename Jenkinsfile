@@ -8,7 +8,7 @@ pipeline {
 	}
 
 	stages {
-	    stage('Build') {
+	    stage('Checkout') {
 	        steps {
 	            echo "Build"
 	            echo "PATH - $PATH"
@@ -21,9 +21,15 @@ pipeline {
 	        	sh 'docker version'
 	        }
 	    }
+	    stage('Compile') {
+	        steps {
+	            sh "mvn -f pom.xml clean package"
+	        }
+	    }
+
 	    stage('Test') {
 	        steps {
-				echo "Test"
+				sh "java -Djavax.net.ssl.trustStore=ftruststore.ks -Djavax.net.ssl.trustStorePassword=changeit -jar target/Football-Team-Standings-Service-0.0.1-SNAPSHOT.jar"
 	        }
 	    }
 	    stage('Integration Test') {
