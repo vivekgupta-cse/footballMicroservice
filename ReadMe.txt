@@ -1,7 +1,10 @@
+__________________________________________________________________________________
+To create a keystore and to put certificate into it (For using it as trust-store)
+__________________________________________________________________________________
 keytool -genkey -storetype PKCS12 -keyalg RSA -alias footballTrustStore -keystore ftruststore.ks -storepass changeit
 keytool -import -alias footballclient -file apiv2.apifootball.com -storetype PKCS12 -keystore ftruststore.ks
 
-
+__________________________________________________________________________________
 To compile:
 mvn -f pom.xml clean package
 
@@ -20,3 +23,21 @@ http://localhost:9001/standings?countryName=France&leagueName=Ligue%202&teamName
 To connect to container:
 docker exec -it myfootballservice /bin/sh
 
+
+__________________________________________________________________________________
+
+Git commands for reference:
+__________________________________________________________________________________
+git config --global user.email "vivekgupta333@gmail.com"
+git config --global user.name "Vivek Gupta"
+git add .
+git commit -m "rectified readme file"
+git push origin main
+
+__________________________________________________________________________________
+
+Jenkins commands for reference:
+__________________________________________________________________________________
+
+To start Jenkins container:
+docker-compose up
