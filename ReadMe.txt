@@ -3,7 +3,7 @@ keytool -import -alias footballclient -file apiv2.apifootball.com -storetype PKC
 
 
 To compile:
-mvn -f pom.xml clean packag
+mvn -f pom.xml clean package
 
 To Run :
 java -Djavax.net.ssl.trustStore=ftruststore.ks -Djavax.net.ssl.trustStorePassword=changeit -jar target/Football-Team-Standings-Service-0.0.1-SNAPSHOT.jar
