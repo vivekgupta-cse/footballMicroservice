@@ -31,7 +31,7 @@ ________________________________________________________________________________
 git config --global user.email "vivekgupta333@gmail.com"
 git config --global user.name "Vivek Gupta"
 git add .
-git commit -m "rectified readme file"
+git commit -m "updated code"
 git push origin main
 
 __________________________________________________________________________________
