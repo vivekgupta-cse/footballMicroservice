@@ -29,6 +29,8 @@ pipeline {
 
 	    stage('Test') {
 	        steps {
+	        	sh "docker container stop myfootballservice"
+	        	sh "docker container rm myfootballservice"
 				sh "docker run -p 9001:9000 -d --name myfootballservice vivek/footballservice"
 	        }
 	    }
