@@ -27,10 +27,17 @@ pipeline {
 	        }
 	    }
 
-	    stage('Test') {
+	    stage('Deploy') {
 	        steps {
-	        	sh "docker container stop myfootballservice"
-	        	sh "docker container rm myfootballservice"
+				/*
+	        		This command will start the container in the daemon mode
+	        	*/
+				sh "docker ps -q --filter \"name=myfootballservice\"| grep -q . && docker stop myfootballservice && docker rm -fv myfootballservice"
+				
+				/*
+	        		This command will check if there is a docker container 
+	        		with given name already running, then stop it and delete the container
+	        	*/
 				sh "docker run -p 9001:9000 -d --name myfootballservice vivek/footballservice"
 	        }
 	    }
