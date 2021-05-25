@@ -32,7 +32,7 @@ pipeline {
 				/*
 	        		This command will start the container in the daemon mode
 	        	*/
-				sh "docker ps -q --filter 'name=myfootballservice'| grep -q . && docker stop myfootballservice && docker rm -fv myfootballservice"
+				//sh "docker ps -q --filter 'name=myfootballservice'| grep -q . && docker stop myfootballservice && docker rm -fv myfootballservice"
 				
 				/*
 	        		This command will check if there is a docker container 
