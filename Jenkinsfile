@@ -27,6 +27,11 @@ pipeline {
 	        }
 	    }
 
+		stage('Test') {
+	        steps {
+				sh "mvn test"
+	        }
+	    }
 	    stage('Deploy') {
 	        steps {
 				/*
@@ -45,20 +50,20 @@ pipeline {
 	    }
 	    stage('Integration Test') {
 	        steps {
-				echo "Integration Test"
+				sh "mvn failsafe:integration-test failsafe:verify"
 	        }
 	    }
 	} 
 	
 	post {
 	      always {
-	          echo 'I am awesome. I run always'
+	          echo 'ALL STAGES COMPLETED RUNNING :) '
 	      }
 	      success {
-	          echo 'I run when you are successful'
+	          echo 'SUCCESS'
 	      }
 	      failure {
-	          echo 'I run when you fail'
+	          echo 'FAILURE'
 	      }
 	  }
 }
