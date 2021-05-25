@@ -60,10 +60,10 @@ pipeline {
 	          echo 'ALL STAGES COMPLETED RUNNING :) '
 	      }
 	      success {
-	          echo 'SUCCESS'
+	          echo 'SUCCESS :D'
 	      }
 	      failure {
-	          echo 'FAILURE'
+	          echo 'FAILURE :('
 	      }
 	  }
 }
