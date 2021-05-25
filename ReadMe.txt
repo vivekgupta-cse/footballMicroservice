@@ -5,17 +5,31 @@ keytool -genkey -storetype PKCS12 -keyalg RSA -alias footballTrustStore -keystor
 keytool -import -alias footballclient -file apiv2.apifootball.com -storetype PKCS12 -keystore ftruststore.ks
 
 __________________________________________________________________________________
+RUNNING WITHOUT DOCKER:
+__________________________________________________________________________________
 To compile:
 mvn -f pom.xml clean package
 
 To Run :
 java -Djavax.net.ssl.trustStore=ftruststore.ks -Djavax.net.ssl.trustStorePassword=changeit -jar target/Football-Team-Standings-Service-0.0.1-SNAPSHOT.jar
 
+Sample URL to put in browser:
+http://localhost:9000/standings?countryName=France&leagueName=Ligue%202&teamName=Chateauroux
+
+__________________________________________________________________________________
+RUNNING WITH DOCKER:
+__________________________________________________________________________________
+
+To compile:
+mvn -f pom.xml clean package
+
 To Create Docker image:
 docker build -f Dockerfile -t vivek/footballservice .
 
 To run docker image:
 docker run -p 9001:9000 -t --name myfootballservice vivek/footballservice
+or
+docker run -p 9001:9000 -d --name myfootballservice vivek/footballservice
 
 Sample URL to put in browser:
 http://localhost:9001/standings?countryName=France&leagueName=Ligue%202&teamName=Chateauroux

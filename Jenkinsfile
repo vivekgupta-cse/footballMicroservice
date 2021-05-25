@@ -29,7 +29,7 @@ pipeline {
 
 	    stage('Test') {
 	        steps {
-				sh "java -Djavax.net.ssl.trustStore=ftruststore.ks -Djavax.net.ssl.trustStorePassword=changeit -jar target/Football-Team-Standings-Service-0.0.1-SNAPSHOT.jar"
+				sh "docker run -p 9001:9000 -d --name myfootballservice vivek/footballservice"
 	        }
 	    }
 	    stage('Integration Test') {
